@@ -24,3 +24,28 @@ export const useMousePosition = (delay = 500) => {
 
     return position
 }
+
+export const useCountDown = (value = 5) => {
+    const seconds = value <= 0 ? 5 : Math.round(value) || 5
+
+    const [count, setCount] = useState(seconds)
+    const [disabled, setDisabled] = useState(true)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            console.log(count + 's')
+            if (count > 1) {
+                setCount((prev) => prev -1)
+            } else {
+                // remove the last timer
+                clearTimeout(timer)
+                setDisabled(false)
+            }
+        }, 1000)
+
+        // remove previous timer
+        return () => clearTimeout(timer)
+    }, [count])
+
+    return [count, disabled]
+}
