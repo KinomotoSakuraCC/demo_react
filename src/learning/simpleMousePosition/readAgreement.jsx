@@ -1,4 +1,4 @@
-import {useCountDown, useMousePosition} from "@/hooks/index.js";
+import {useCountDown, useMousePosition} from "@/learning/hooks/index.js";
 
 export const ReadAgreement = () => {
     const [count, disabled] = useCountDown();

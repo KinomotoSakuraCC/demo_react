@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useMousePosition} from "@/hooks/index.js";
+import {useMousePosition} from "@/learning/hooks/index.js";
 
 const MousePosition = () => {
     const position = useMousePosition(100)
