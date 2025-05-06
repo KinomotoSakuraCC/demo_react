@@ -1,0 +1,47 @@
+.multi-value-block-input {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 300px;
+}
+
+.block-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border: 1px solid #ccc;
+    padding: 1px;
+    border-radius: 4px;
+}
+
+.value-block {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 4px 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc; /* 增加外轮廓 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+}
+
+.remove-button {
+    background: none;
+    border: none;
+    color: #ff4d4f;
+    margin-left: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.input-field {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 4px;
+    min-width: 100px;
+    color: black;
+    background-color: white;
+}
