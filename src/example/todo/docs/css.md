@@ -26,6 +26,133 @@
 }
 ```
 
+### 弹性布局
+
+#### example
+
+```jsx
+import React from "react";
+import './index.css';
+
+export const App = () => {
+    return (
+        <>
+            <div className='father' style={{backgroundColor: 'antiquewhite'}}>
+                <span className='left-label' style={{color: "black"}}>{"label"}</span>
+                <div className='right-div'>
+                    <span className='text' style={{color: "black"}}>{"message1234567890"}</span>
+                    <input className='input' style={{backgroundColor: 'white', borderWidth: 0, height: '80%'}}
+                           type='text' placeholder='please enter...'/>
+                </div>
+            </div>
+        </>
+    )
+}
+```
+
+
+
+```css
+.father {
+    display: flex;
+    width: 400px;
+    height: 200px;
+
+
+    justify-content: space-between;
+    align-items: center;
+
+    .left-label {
+        width: 100px;
+    }
+
+    .right-div {
+        width: 300px;
+        height: 50px;
+        border: 5px solid black;
+        border-radius: 10px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .text {
+            max-width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .input {
+            min-width: 200px;
+            flex: 1 0 auto; /* 有剩余时自动放大 */
+        }
+    }
+}
+```
+
+![image-20250513013934106](C:\Users\Sakur\AppData\Roaming\Typora\typora-user-images\image-20250513013934106.png)
+
+#### flex
+
+1. 弹性容器：父元素的display设置为flex或inline-flex，创建弹性容器；子元素成为弹性项目
+2. 主轴与交叉轴：主轴（水平方向）、交叉轴（垂直方向）
+3. 水平：justify-content
+4. 垂直：align-items
+
+```css
+/* 以主轴水平方向从左往右为例 */
+.father-box {
+    display: flex;
+
+    /* 主轴对齐方式 */
+    justify-content: flex-start;
+    /* flex-start | flex-end | center | space-between | space-around */
+    /* 左对齐 | 右对齐 | 居中对齐 | 两端对齐 | 两侧间隔 */
+
+    /* 交叉轴对齐方式 */
+    align-items: stretch;
+    /* flex-start | flex-end | center | baseline | stretch */
+    /* 顶端对齐 | 底部对齐 | 居中对齐 | 基线对齐（第一行文字的底线） | 拉伸（auto或无高度则占满容器高度） */
+
+    /* 主轴方向 */
+    flex-direction: row;
+    /* row | row-reverse | column | column-reverse */
+    /* 从左往右 | 从右往左 | 从上往下 | 从下往上 */
+
+    /* 换行 */
+    flex-wrap: nowrap;
+    /* nowrap | wrap | wrap-reverse */
+    /* 不换行 | 换行 | 反向换行（第一行在底部） */
+    /* flex-flow: row nowrap; */
+}
+
+/* 子元素 */
+.child-box {
+    /* 排列顺序，默认0，小值优先 */
+    order: 0;
+
+    /* 项目放大比例，默认0，存在剩余也不放大 */
+    flex-grow: 1; /* 所有项目设置1，等分剩余空间 */
+
+    /* 项目缩小比例，默认1，空间不足时缩小 */
+    flex-shrink: 0; /* 仅当前设置0，空间不足也不会缩小 */
+
+    /* 项目占据空间，默认auto，项目本来的宽度 */
+    flex-basis: auto; /* 100px | 50% | 10em | 10rem | 10vw | 10vh */
+
+    /* flex简写 */
+    /* flex: 0 1 auto; 默认 */
+    /* flex: 1 1 auto; （auto） */
+    /* flex: 0 0 auto; （none） */
+
+    /* 子元素的独特对齐方式，覆盖父元素的align-items */
+    align-self: center;
+    /* auto | flex-start | flex-end | center | baseline | stretch */
+    /* auto: 继承父元素的align-items */
+}
+```
+
 
 
 ### 定位方式
@@ -50,7 +177,7 @@
 .father {
     position: relative;
 }
-.son.absolute-element {
+.son-absolute-element {
     /* 绝对定位，元素脱离文档流，相对于最近的非static定位祖先元素进行定位（或浏览器视窗） */
     position: absolute;
     top: 50px;  /* 向下偏移10px */
@@ -79,18 +206,18 @@
 #### example
 
 ```css
-.p.custom-text {
+.custom-text {
     color: black;
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
     white-space: nowrap;  /* 超出不换行 */
     overflow: hidden;
-    text-overflow: ellipsis;
+    
 }
 
 /* 鼠标悬浮 :hover */
-.p.custom-text:hover {
+.custom-text:hover {
     color: blue;
     text-decoration: underline;
     /* 设置光标形状 */
@@ -103,7 +230,7 @@
 #### 字体及文本属性
 
 ```css
-.p.text {
+.text {
     width: 200px;
     height: 100px;
 
@@ -151,4 +278,3 @@
 }
 ```
 
-https://blog.csdn.net/weixin_43331963/article/details/106784229
