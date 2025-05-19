@@ -1,5 +1,29 @@
 ## CSS
 
+### common use
+
+```css
+/* 文字超出后省略号 */
+.text {
+    word-break: keep-all;
+    white-space: nowrap;  /* 不自动换行，忽略空白及换行符 - pre */
+    text-overflow: ellipsis;  /* 超出显示省略号 */
+    overflow: hidden;  /* 超出隐藏 */
+}
+
+/* 鼠标悬浮 :hover */
+.custom-text:hover {
+    color: blue;
+    text-decoration: underline;
+    /* 设置光标形状 */
+    cursor: pointer;  /* 手形光标 */
+}
+```
+
+
+
+
+
 ### 盒子模型
 
 ```css
@@ -203,30 +227,6 @@ export const App = () => {
 
 ### 文本
 
-#### example
-
-```css
-.custom-text {
-    color: black;
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: left;
-    white-space: nowrap;  /* 超出不换行 */
-    overflow: hidden;
-    
-}
-
-/* 鼠标悬浮 :hover */
-.custom-text:hover {
-    color: blue;
-    text-decoration: underline;
-    /* 设置光标形状 */
-    cursor: pointer;  /* 手形光标 */
-}
-```
-
-
-
 #### 字体及文本属性
 
 ```css
@@ -276,5 +276,24 @@ export const App = () => {
 
     color: black;
 }
+```
+
+
+
+### 元素禁用
+
+```jsx
+<div style={{cursor: 'not-allowed'}}>   {/*禁用样式*/}
+    <div style={{pointerEvents: 'none'}}>   {/*事件不可用*/}
+        
+    </div>
+</div>
+
+
+<input
+    disabled='true' style={{cursor: 'not-allowed'}}
+    type='text' placeholder='please enter...'
+    autocomplete='on'
+/>
 ```
 
